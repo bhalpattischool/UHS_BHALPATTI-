@@ -256,7 +256,60 @@ section {
 </section>
  
 </section>
-           
+         <section id="timetable">
+<h2 style="text-aling: center;
+font-family: arial, sans-serif;">School Timetanle</h2>
+<table border="3" style="width: 100%;
+border-collapse: collapse; text-align: center; font-size:16px;">
+<thead style="background-color: #4CAF50;">
+<tr>
+<th>peiod</th>
+<th>Time</th>
+<th>Subject</th>
+<th>teacher</th>
+</tr>
+</thead>
+<thody>
+<tr>
+<td>1</td>
+<td>12:20 PM - 1:00 PM</td>
+<td>Geographt</td>
+<td>Santosh sir</td>
+</tr>
+<tr style="background-color: #f2f2f2;">
+<td>2</td>
+<td>1:00 PM - 1:40 PM</td>
+<td>computer science</td>
+<td>DN sir</td>
+</tr>
+<td>3</td>
+<td>1:40 PM - 2:20 PM</td>
+<td>History</td>
+<td>Ranjeet sir</td>
+<tr style="background-color: #f2f2f2;">
+<td>4</td>
+<td>2:20 PM - 3:00 PM</td>
+<td>political science</td>
+<td>priya mam</td>
+<tr>
+<td colspan="5"style="text-align: center; background-color:  (#ffeb99)a;">Lunch Break (3:00 PM -3:30PM)</td>
+</tr>
+<td>5</td>
+<tr style="background-color: #f2f2f2;">
+<td>2</td>
+<td>3:30 PM - 4:10 PM</td>
+<td>English</td>
+<td>Rakhi mam</td>
+<tr style="background-color: #f2f2f2;">
+<td>6</td>
+<td>4:10 PM - 4:50 PM</td>
+<td>Hindi</td>
+<td>Asha Mam</td>
+</tr>
+</thody>
+</table>
+</section>
+      
 
        
     </main>
