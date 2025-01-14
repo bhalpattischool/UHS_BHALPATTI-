@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 
@@ -260,7 +259,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['pdfFile'])) {
             <p>अनुभव:             ? वर्ष</p>
         </div>
         <div class="teacher-item">
-            <img src="images/teacher7.jpg" alt=aash">
+            <img src="images/teacher7.jpg" alt="आशा मैम">
             <h3>आशा मैम</h3>
             <p>विषय: हिंदी</p>
             <p>योग्यता:            ? (हिंदी)</p>
@@ -268,75 +267,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['pdfFile'])) {
         </div>
     </div>
 </section>
-
-
-        
-            <section id="library">
-    <h2>लाइब्रेरी और NCERT किताबें</h2>
-    <p>हमारी लाइब्रेरी में कक्षा 6-12 तक की हिंदी माध्यम की NCERT किताबें उपलब्ध हैं। ये किताबें ई-बुक के रूप में  उपलब्ध हैं और किताबों की तस्वीरें भी दी गई हैं।</p>
-    
-    <table border="1" cellspacing="0" cellpadding="10" style="width: 100%; text-align: center; border-collapse: collapse;">
-        <thead>
-            <tr style="background-color: #4CAF50; color: white;">
-                <th>कक्षा</th>
-                <th>किताब का नाम</th>
-                <th>ईबुक</th>
-                <th>open</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>कक्षा 6</td>
-                <td>NCERT हिंदी माध्यम किताबें</td>
-                <td><a href="ebooks/class6.pdf" target="_blank">..?</a></td>
-               
-            </tr>
-            <tr>
-                <td>कक्षा 7</td>
-                <td>NCERT हिंदी माध्यम किताबें</td>
-                <td><a href="ebooks/class7.pdf" target="_blank">..?</a></td>
-                
-            </tr>
-            <tr>
-                <td>कक्षा 8</td>
-                <td>NCERT हिंदी माध्यम किताबें</td>
-                <td><a href="ebooks/class8.pdf" target="_blank">..?</a></td>
-                
-            </tr>
-            <tr>
-                <td>कक्षा 9</td>
-                <td>NCERT हिंदी माध्यम किताबें</td>
-                <td><a href="ebooks/class9.pdf" target="_blank">..?</a></td>
-                
-            </tr>
-            <tr>
-                <td>कक्षा 10</td>
-                <td>NCERT हिंदी माध्यम किताबें</td>
-                <td><a href="ebooks/class10.pdf" target="_blank">..?</a></td>
-                
-            </tr>
-            <tr>
-                <td>कक्षा 11</td>
-                <td>NCERT हिंदी माध्यम किताबें</td>
-                <td><a href="ebooks/class12.pdf" target="_blank">..?</a></td>
-
-                
-            </tr>
-            <tr>
-                <td>कक्षा 12</td>
-                <td>NCERT हिंदी माध्यम किताबें</td>
-                <td><a href="ebooks/class11.pdf" target="_blank">..?</a></td>
-               
-            </tr>
-        </tbody>
-    </table>
+         <!-- लाइब्रेरी सेक्शन -->
+<section>
+    <h2>लाइब्रेरी</h2>
+    <p>यहाँ NCERT की आधिकारिक वेबसाइट का लिंक दिया गया है:</p>
+    <a href="https://ncert.nic.in/" target="_blank">NCERT की वेबसाइट पर जाएं</a>
 </section>
-           <form action="upload.php" method="POST" enctype="multipart/form-data">
-    <label for="pdfFile">Choose a PDF to upload:</label>
-    <input type="file" id="pdfFile" name="pdfFile" accept="application/pdf" required>
-    <button type="submit">Upload</button>
-</form>
-
+ 
+</section>
+           
 <section id="timetable">
 <h2 style="text-aling: center;
 font-family: arial, sans-serif;">School Timetanle</h2>
@@ -411,13 +350,13 @@ border-collapse: collapse; text-align: center; font-size:16px;">
         <section id="contact">
             <h2>संपर्क करें</h2>
             <p>पता: भालपट्टी, दरभंगा, बिहार - 847239</p>
-            <p>फोन: 9999999999</p>
-            <p>ईमेल: demo@gmail.com</p>
+            <p>फोन:9504797910</p>
+            <p>ईमेल: ajit91884270@gmail.com</p>
         </section>
     </main>
 
     <footer>
-        <p>&copy; +2 उतक्रमित माध्यमिक विद्यालय भालपट्टी। सभी अधिकार सुरक्षित।</p>
+        <p>&copy; +2 उतक्रमित माध्यमिक विद्यालय भालपट्टी।</p>
     </footer>
 </body>
 
