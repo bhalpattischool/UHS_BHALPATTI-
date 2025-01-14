@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="hi">
 
 <head>
@@ -120,11 +120,30 @@
             color: white;
         }
 
-        #library img {
-            max-width: 100px;
-            height: auto;
+       
         }
-
+@media (max-width: 768px) {
+.contaner {
+fiex-direction:collumn;
+aling-items: center;
+}
+.item {
+flex: 1 1 100%;
+margin: 10px 0;
+}
+}
+@mwdia (max-width: 1024px) {
+.container {
+flex-direction: columnn;
+}
+.item {
+flex: 1 1 45%;
+margin: 10px 0;
+}
+}
+img { maax-width: 100%;
+height:auto;
+}
 section {
     margin: 20px;
     padding: 15px;
@@ -132,30 +151,6 @@ section {
     border-radius: 5px;
     background-color: #f9f9f9;
 }
-<?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['pdfFile'])) {
-    $uploadDir = 'uploads/'; // Directory jahan file store hogi
-    $uploadFile = $uploadDir . basename($_FILES['pdfFile']['name']);
-
-    // Ensure upload directory exists
-    if (!is_dir($uploadDir)) {
-        mkdir($uploadDir, 0777, true);
-    }
-
-    // Check if the file is a PDF
-    if (mime_content_type($_FILES['pdfFile']['tmp_name']) == 'application/pdf') {
-        if (move_uploaded_file($_FILES['pdfFile']['tmp_name'], $uploadFile)) {
-            echo "The file " . basename($_FILES['pdfFile']['name']) . " has been uploaded successfully!";
-        } else {
-            echo "Error uploading your file. Please try again.";
-        }
-    } else {
-        echo "Only PDF files are allowed.";
-    }
-} else {
-    echo "No file uploaded.";
-}
-?>
 
     </style>
 </head>
@@ -179,7 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['pdfFile'])) {
     <main>
         <section id="about">
             <h2>हमारे बारे में</h2>
-            <p>+2 उतक्रमित माध्यमिक विद्यालय भालपट्टी का स्थापना 1995 में हुआ था। यह स्कूल शिक्षा के क्षेत्र में अपने उच्च मानकों और समर्पित शिक्षकों के लिए जाना जाता है।</p>
+            <p>+2 उतक्रमित माध्यमिक विद्यालय भालपट्टी का स्थापना 19.. में हुआ था। यह स्कूल शिक्षा के क्षेत्र में अपने उच्च मानकों और समर्पित शिक्षकों के लिए जाना जाता है।</p>
         </section>
 
         <section id="admissions">
@@ -255,7 +250,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['pdfFile'])) {
             <img src="images/teacher6.jpg" alt="राखी मैम">
             <h3>राखी मैम</h3>
             <p>विषय: अंग्रेजी</p>
-            <p>योग्यता:          🙄🙄   ? (अंग्रेजी)</p>
+            <p>योग्यता:         ? (अंग्रेजी)</p>
             <p>अनुभव:             ? वर्ष</p>
         </div>
         <div class="teacher-item">
@@ -270,7 +265,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['pdfFile'])) {
          <!-- लाइब्रेरी सेक्शन -->
 <section>
     <h2>लाइब्रेरी</h2>
-    <p>यहाँ NCERT की आधिकारिक वेबसाइट का लिंक दिया गया है:</p>
+    <p>यहाँ पर NCRT की सभी BOOK उपलब्ध हँ :</p>
     <a href="https://ncert.nic.in/" target="_blank">NCERT की वेबसाइट पर जाएं</a>
 </section>
  
@@ -329,17 +324,17 @@ border-collapse: collapse; text-align: center; font-size:16px;">
 </thody>
 </table>
 </section>
-<section>
-    <h2>Upload PDF</h2>
-    <form action="" method="POST" enctype="multipart/form-data">
-        <label for="pdfFile">Choose a PDF to upload:</label>
-        <input type="file" id="pdfFile" name="pdfFile" accept="application/pdf" required>
-        <button type="submit">Upload</button>
-    </form>
-</section>
-
-        
-
+     <!-- Image Upload Section -->
+    <section id="upload">
+        <h2>छवि अपलोड करें</h2>
+        <div class="image-upload">
+            <label for="file-input">छवि चुनें</label>
+            <input id="file-input" type="file" accept="image/*" onchange="previewImage(event)" />
+        </div>
+        <div class="image-preview" id="image-preview">
+            <!-- Preview will be displayed here -->
+        </div>
+    </section>
         <section id="contact">
             <h2>संपर्क करें</h2>
             <p>पता: भालपट्टी, दरभंगा, बिहार - 847239</p>
