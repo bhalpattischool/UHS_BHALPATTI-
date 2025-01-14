@@ -311,12 +311,7 @@ border-collapse: collapse; text-align: center; font-size:16px;">
 </table>
 </section>
     
-        <section id="contact">
-            <h2>संपर्क करें</h2>
-            <p>पता: भालपट्टी, दरभंगा, बिहार - 847239</p>
-            <p>फोन:9504797910</p>
-            <p>ईमेल: ajit91884270@gmail.com</p>
-        </section>
+       
     </main>
 </body>
 
