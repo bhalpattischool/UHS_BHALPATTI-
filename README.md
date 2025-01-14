@@ -65,14 +65,6 @@
             width: 100%;
         }
 
-        .gallery img {
-            width: 100%;
-            max-width: 300px;
-            margin: 10px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
         .cta {
             text-align: center;
             margin-top: 20px;
@@ -191,13 +183,7 @@ section {
                 <li>वैज्ञानिक प्रयोगशालाएं</li>
             </ul>
         </section>
-<!-- Image Upload Section -->
-    <section id="upload">
-        <h2>छवि अपलोड करें</h2>
-        <div class="image-upload">
-            <label for="file-input"></label>
-            <input id="file-input" type="file" accept="image/*" onchange="previewImage(event)" />
-        </div>
+
         <div class
  <!-- Classes Section -->
     <section id="classes">
@@ -324,17 +310,7 @@ border-collapse: collapse; text-align: center; font-size:16px;">
 </thody>
 </table>
 </section>
-     <!-- Image Upload Section -->
-    <section id="upload">
-        <h2>छवि अपलोड करें</h2>
-        <div class="image-upload">
-            <label for="file-input">छवि चुनें</label>
-            <input id="file-input" type="file" accept="image/*" onchange="previewImage(event)" />
-        </div>
-        <div class="image-preview" id="image-preview">
-            <!-- Preview will be displayed here -->
-        </div>
-    </section>
+    
         <section id="contact">
             <h2>संपर्क करें</h2>
             <p>पता: भालपट्टी, दरभंगा, बिहार - 847239</p>
@@ -342,10 +318,6 @@ border-collapse: collapse; text-align: center; font-size:16px;">
             <p>ईमेल: ajit91884270@gmail.com</p>
         </section>
     </main>
-
-    <footer>
-        <p>&copy; +2 उतक्रमित माध्यमिक विद्यालय भालपट्टी।</p>
-    </footer>
 </body>
 
 </html>
