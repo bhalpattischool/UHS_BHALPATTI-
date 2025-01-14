@@ -338,14 +338,7 @@ border-collapse: collapse; text-align: center; font-size:16px;">
     </form>
 </section>
 
-        <section id="gallery" class="gallery">
-            <h2>गैलरी</h2>
-            <img src="school1.jpg" alt="स्कूल भवन">
-<li></li>
-<li><a href="https://ncert.nic.in/textbook.php" target="_blank">कक्षा 11 की NCERT किताबें</a></li>
-            <img src="event1.jpg" alt="वार्षिक उत्सव">
-            <img src="lab.jpg" alt="प्रयोगशाला">
-        </section>
+        
 
         <section id="contact">
             <h2>संपर्क करें</h2>
