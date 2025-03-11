@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajit's AI for Study</title>
     <style>
+        /* CSS कोड यहां */
         body {
             font-family: 'Open Sans', Arial, sans-serif;
             background-color: #f0f4f8;
@@ -362,6 +363,7 @@
     </div>
 
     <script>
+        // JavaScript कोड यहां
         const API_KEY = "AIzaSyBLyEG8u3WG-3ku7Z_SdMlndGqTBtwFXfo";
         let chatHistory = [];
         let currentSessionId = null;
@@ -554,7 +556,8 @@
             const firstMessage = history.find(message => message.role === "user")?.parts[0]?.text || "नई चैट";
             return firstMessage.split(" ").slice(0, 5).join(" ") + "...";
         };
-// चैट हिस्ट्री पॉपअप खोलें
+
+        // चैट हिस्ट्री पॉपअप खोलें
         const openHistory = () => {
             document.getElementById("overlay").style.display = "block";
             document.getElementById("history-popup").style.display = "block";
@@ -613,7 +616,53 @@
             };
         };
 
-                // चैट सेशन लोड करें
+        // चैट सेशन डिलीट करें
+        const deleteChatSession = (sessionId) => {
+            const transaction = db.transaction(["chatSessions"], "readwrite");
+            const store = transaction.objectStore("chatSessions");
+            const request = store.delete(sessionId);
+
+            request.onsuccess = () => {
+                loadHistoryList();
+                if (currentSessionId === sessionId) {
+                    currentSessionId = null;
+                    chatHistory = [];
+                    document.getElementById("chat-box").innerHTML = "";
+                }
+            };
+
+            request.onerror = (event) => {
+                console.error("Error deleting chat session:", event.target.error);
+            };
+        };
+      // चैट टाइटल एडिट करें
+        const editChatTitle = (sessionId, newTitle) => {
+            const transaction = db.transaction(["chatSessions"], "readwrite");
+            const store = transaction.objectStore("chatSessions");
+            const request = store.get(sessionId);
+
+            request.onsuccess = (event) => {
+                const session = event.target.result;
+                if (session) {
+                    session.title = newTitle;
+                    const updateRequest = store.put(session);
+
+                    updateRequest.onsuccess = () => {
+                        loadHistoryList();
+                    };
+
+                    updateRequest.onerror = (event) => {
+                        console.error("Error updating chat title:", event.target.error);
+                    };
+                }
+            };
+
+            request.onerror = (event) => {
+                console.error("Error fetching chat session:", event.target.error);
+            };
+        };
+
+        // चैट सेशन लोड करें
         const loadChatSession = (sessionId) => {
             const transaction = db.transaction(["chatSessions"], "readonly");
             const store = transaction.objectStore("chatSessions");
