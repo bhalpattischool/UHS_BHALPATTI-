@@ -139,14 +139,74 @@
       max-height:70vh; overflow-y:auto;
     }
     .history-panel.open { left:0; }
-    .history-panel h3 {
-      margin-top:0; color:#4b6cb7; margin-bottom:1rem;
+    .history-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .history-header h3 {
+      margin: 0;
+      color:#4b6cb7;
     }
     .history-item {
-      padding:6px 8px; border-bottom:1px solid #ececec;
-      cursor:pointer; font-size:0.94rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 6px;
+      margin-bottom: 6px;
+      background: #f8faff;
+      transition: all 0.2s;
     }
-    .history-item:hover { background:#f0f8ff; }
+    .history-item:hover {
+      background: #eef2ff;
+    }
+    .history-text {
+      flex: 1;
+      cursor: pointer;
+      padding: 4px 0;
+    }
+    .history-actions {
+      display: flex;
+      gap: 6px;
+    }
+    .delete-btn {
+      background: #ffeded;
+      color: #ff6b6b;
+      border: none;
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .delete-btn:hover {
+      background: #ffdbdb;
+      transform: scale(1.1);
+    }
+    .no-history {
+      text-align: center;
+      color: #777;
+      padding: 10px;
+      font-style: italic;
+    }
+    .clear-all-btn {
+      background: #ffeded;
+      color: #ff6b6b;
+      border: none;
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .clear-all-btn:hover {
+      background: #ffdbdb;
+    }
   </style>
 </head>
 <body>
@@ -157,7 +217,7 @@
   </header>
   <div class="container">
     <div class="search-bar" id="searchBar">
-      <input type="text" id="q" placeholder="अपना सवाल पूछें...">
+      <input type="text" id="q" placeholder="अपना सवाल पूछें..." onkeypress="handleKeyPress(event)">
       <button class="btn" onclick="handleSearch()">🔍</button>
     </div>
     <div id="loading" class="loader"></div>
@@ -189,7 +249,10 @@
 
   <!-- History Panel -->
   <div class="history-panel" id="historyPanel">
-    <h3>Search History</h3>
+    <div class="history-header">
+      <h3>Search History</h3>
+      <button class="clear-all-btn" onclick="clearAllHistory()">Clear All</button>
+    </div>
     <div id="historyList"></div>
   </div>
 
@@ -214,30 +277,76 @@
       };
       localStorage.setItem('prefs', JSON.stringify(prefs));
       document.getElementById('statusText').textContent = "Settings saved ✅";
-      closeSettings();handleSearch();
+      closeSettings();
+      handleSearch();
     }
 
-    // History
+    // History functions
     function saveHistory(q){
       if(!q) return;
       let h = JSON.parse(localStorage.getItem('hist')||'[]');
-      h.unshift(q);h=[...new Set(h)].slice(0,10);
+      // Add new item at beginning and remove duplicates
+      h = [q, ...h.filter(item => item !== q)].slice(0,10);
       localStorage.setItem('hist',JSON.stringify(h));
     }
+    
     function showHistory(){
-      let h=JSON.parse(localStorage.getItem('hist')||'[]');
-      const list=h.map(q=>`<div class="history-item" onclick="useHistory('${q}')">${q}</div>`).join('');
-      document.getElementById('historyList').innerHTML = list||'<p style="color:#555">No history</p>';
+      let h = JSON.parse(localStorage.getItem('hist')||'[]');
+      const historyList = document.getElementById('historyList');
+      
+      if(h.length === 0) {
+        historyList.innerHTML = '<div class="no-history">No search history found</div>';
+        return;
+      }
+      
+      let listHtml = '';
+      h.forEach((q, index) => {
+        listHtml += `
+          <div class="history-item">
+            <div class="history-text" onclick="useHistory('${q.replace(/'/g, "\\'")}')">${q}</div>
+            <div class="history-actions">
+              <button class="delete-btn" onclick="deleteHistoryItem(${index})">×</button>
+            </div>
+          </div>
+        `;
+      });
+      
+      historyList.innerHTML = listHtml;
     }
+    
     function useHistory(q){
-      document.getElementById('q').value=q;
-      toggleHistory();
+      document.getElementById('q').value = q;
       handleSearch();
+    }
+    
+    function deleteHistoryItem(index){
+      let h = JSON.parse(localStorage.getItem('hist')||'[]');
+      if(index >= 0 && index < h.length) {
+        h.splice(index, 1);
+        localStorage.setItem('hist', JSON.stringify(h));
+        showHistory();
+      }
+    }
+    
+    function clearAllHistory(){
+      if(confirm("Are you sure you want to clear all search history?")) {
+        localStorage.removeItem('hist');
+        showHistory();
+      }
+    }
+
+    // Handle Enter key press
+    function handleKeyPress(event) {
+      if (event.key === "Enter") {
+        handleSearch();
+      }
     }
 
     // Main Search & Display
     async function handleSearch(){
-      const query=document.getElementById('q').value.trim(); if(!query) return;
+      const query=document.getElementById('q').value.trim(); 
+      if(!query) return;
+      
       saveHistory(query);
       document.getElementById('loading').textContent="Loading...";
       document.getElementById('aiSummary').innerHTML="<p>Loading AI summary...</p>";
@@ -277,7 +386,10 @@
     }
 
     // Load initial
-    window.onload=()=>{ if(!localStorage.getItem('prefs')) saveSettings(); handleSearch(); };
+    window.onload=()=>{ 
+      if(!localStorage.getItem('prefs')) saveSettings(); 
+      showHistory();
+    };
   </script>
 </body>
 </html>
